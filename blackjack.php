@@ -71,11 +71,14 @@
      * @return array 4 random cards from deck
      */
     function dealCards(array $deck):array {
+
         shuffle($deck);
+
         $card1 = array_pop($deck);
         $card2 = array_pop($deck);
         $card3 = array_pop($deck);
         $card4 = array_pop($deck);
+
         return [$card1, $card2, $card3, $card4];
     }
 
@@ -87,9 +90,23 @@
      * @return array Player and dealer scores
      */
     function getScores(array $deck):array {
+
         $cards = dealCards($deck);
-        $playerScore = $cards[0]['value'] += $cards[2]['value'];
-        $dealerScore = $cards[1]['value'] += $cards[3]['value'];
+
+        $_1stCard = $cards[0]['value'];
+        $_2ndCard = $cards[1]['value'];
+        $_3rdCard = $cards[2]['value'];
+        $_4thCard = $cards[3]['value'];
+
+        if ($_1stCard == 1 && $_3rdCard == 1) {
+            $_1stCard = 11;
+        }
+        if ($_2ndCard == 1 && $_4thCard == 1) {
+            $_2ndCard = 11;
+        }
+        $playerScore = $_1stCard + $_3rdCard;
+        $dealerScore = $_2ndCard + $_4thCard;
+
         return [$playerScore, $dealerScore];
     }
 
