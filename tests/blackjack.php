@@ -302,18 +302,8 @@ class StackTest extends TestCase
             ['suit' => 'hearts', 'value' => '1'],
             ['suit' => 'hearts', 'value' => '2'],
             ['suit' => 'hearts', 'value' => '3'],
-            ['suit' => 'hearts', 'value' => '4'],
         ];
         $case = getScores($cards);
         $this->assertCount(2, $case);
     }
-
-
-
-    //malformed test - give it an empty array and prime it to expect an exception
-
-
-
-
-
 }
