@@ -268,10 +268,9 @@ class StackTest extends TestCase
         $case = getScores($cards);
         $this->assertInternalType('array', $case, $message = 'Error: Not expected data type');
     }
-
-
-    // success - check if getScores() contains only 2 values/numbers
-    public function testgetScoresFailureArray ()
+    
+    // success - check if getScores() returns only 2 values/numbers
+    public function testgetScoresSuccessCount ()
     {
         $cards = [
             ['suit' => 'hearts', 'value' => '1'],
@@ -283,18 +282,31 @@ class StackTest extends TestCase
         $this->assertCount(2, $case);
     }
 
-
-    // success - check if getScores() contains $playerScore +/or $dealerScore
-
-
+    // success - check if getScores() returns numbers only
+    public function testgetScoresSuccessDataType ()
+    {
+        $cards = [
+            ['suit' => 'hearts', 'value' => '1'],
+            ['suit' => 'hearts', 'value' => '2'],
+            ['suit' => 'hearts', 'value' => '3'],
+            ['suit' => 'hearts', 'value' => '4'],
+        ];
+        $case = getScores($cards);
+        $this->assertContainsOnly('integer', $case);
+    }
 
     // failure - give it an array of 3 cards
-//    public function testgetScoresFailureArray ()
-//    {
-//        $cards = [$card1, $card2, $card3, $card4];
-//        $case = getScores($cards);
-//        $this->assertCount(2, $case);
-//    }
+    public function testgetScoresFailureArray ()
+    {
+        $cards = [
+            ['suit' => 'hearts', 'value' => '1'],
+            ['suit' => 'hearts', 'value' => '2'],
+            ['suit' => 'hearts', 'value' => '3'],
+            ['suit' => 'hearts', 'value' => '4'],
+        ];
+        $case = getScores($cards);
+        $this->assertCount(2, $case);
+    }
 
 
 
