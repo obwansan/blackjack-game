@@ -268,7 +268,7 @@ class StackTest extends TestCase
         $case = getScores($cards);
         $this->assertInternalType('array', $case, $message = 'Error: Not expected data type');
     }
-    
+
     // success - check if getScores() returns only 2 values/numbers
     public function testgetScoresSuccessCount ()
     {
